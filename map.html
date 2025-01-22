@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leaflet Map with Hillshade Basemap</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 100vh; /* แสดงแผนที่เต็มหน้าจอ */
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // สร้างแผนที่และตั้งค่ากล้องเริ่มต้น
+    const map = L.map('map').setView([13.736717, 100.523186], 8); // พิกัดกรุงเทพฯ
+
+    // เพิ่ม basemap จาก URL ที่กำหนด
+    const hillshadeLayer = L.tileLayer('https://app.vallarismaps.com/core/api/tiles/1.0-beta/tiles/public/hillshade/{z}/{x}/{y}', {
+      maxZoom: 19, // ค่า Zoom สูงสุด
+      attribution: '&copy; <a href="https://app.vallarismaps.com">Vallaris Maps</a>' // เครดิต
+    });
+
+    hillshadeLayer.addTo(map); // เพิ่ม layer ลงในแผนที่
+  </script>
+</body>
+</html>
